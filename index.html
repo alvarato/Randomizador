@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="gradiente">
+<style>
+    /* CSS */
+    .button-19 {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 16px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .button-19:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .button-19:main,
+    .button-19:focus {
+        user-select: auto;
+    }
+
+    .button-19:hover:not(:disabled) {
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+    }
+
+    .button-19:disabled {
+        cursor: auto;
+    }
+
+    .button-19:active {
+        border-width: 4px 0 0;
+        background: none;
+    }
+
+    .gradiente {
+        background: -webkit-linear-gradient(182deg, #2bbfe4, #0701ce, #3fad8a);
+    }
+</style>
+
+<body style="width: 90%; margin: auto; color: white; padding: 5px;" class="containter">
+    <div style="width: 80%; border: solid; text-align: center; margin: auto; margin-top: 30px;">
+        <h1 style="font-size: 70px;">Randomizador</h1>
+        <h2 style="font-size: 50px;">Introduce la cantidad de jugadores</h2>
+        <input style="font-size: 50px; max-width: 120px;" type="number" id="number" class="centar">
+        <br>
+        <button class="button-19" role="button" onclick="lanzar()"
+            style="max-width: 170px; margin-top: 30px; margin-bottom: 70px;">Lanzar</button>
+        <div id="print"
+            style="margin-top: 70px; font-size: 50px; border: solid; max-width: 120px; margin: auto; margin-bottom: 60px;">
+            0</div>
+        <img src="https://i.ibb.co/zrS2C6y/Logo.png" alt="Logo" style="width: 100px;"><br>
+        <b style="margin-bottom: 60px;">PowerBy PacoTech</b>
+    </div>
+</body>
+<script>
+    async function lanzar() {
+        const jugadores = document.getElementById('number').value;
+        const result = Math.floor(Math.random() * (jugadores)) + 1;
+        const flag = control(jugadores);
+        if (flag) {
+            var array = [];
+            for (let i = 0; i < 2; i++) {
+                for (let index = 0; index < jugadores; index++) {
+                    array[index] = index + 1;
+                    await esperar(200);
+                    print(index + 1);
+                }
+
+
+                console.log("vuelta:" + i);
+            }
+            for (let index = 0; index < jugadores; index++) {
+                await esperar(400);
+                print(index + 1);
+                if (result == index + 1) break;
+            }
+        }
+    }
+    function print(numeros) {
+        document.getElementById('print').innerHTML = `${numeros}`;
+    }
+    function esperar(time) {
+        return new Promise(resolve => {
+            setTimeout(resolve, time);
+        });
+    }
+    function control(num) {
+        if (num <= 1) {
+            return true;
+        }
+        return false;
+    }
+</script>
+
+</html>
