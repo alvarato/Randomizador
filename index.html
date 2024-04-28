@@ -92,7 +92,9 @@ background-attachment:fixed;
 <script>
     async function lanzar() {
         const jugadores = document.getElementById('number').value;
-        const result = Math.floor(Math.random() * (jugadores)) + 1;
+        const jugadores2 = jugadores2*3;
+        const result = Math.floor(Math.random() * (jugadores2)) + 1;
+        result = result/3;
         const flag = control(jugadores);
         if (flag) {
             var array = [];
